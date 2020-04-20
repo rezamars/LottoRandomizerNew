@@ -512,6 +512,39 @@ public class Eurojackpot {
             }
         }
         
+        checkTillaggArrayForDublicatePair();
     }
+    
+    //If there is one or more dublicates of one pair
+    //the randomize method is called to make a new randomize
+    public void checkTillaggArrayForDublicatePair(){
+        
+        String[] strArray = new String[10];
+        
+        for (int w = 0 ; w < 10 ; w++){
+            strArray[w] = "";
+        }
+        
+        int strIndex = 0;
+        for (int x = 0 ; x < 20 ; x+=2){
+            strArray[strIndex] = Integer.toString(tillaggNumber[x]) + "+" + Integer.toString(tillaggNumber[x+1]);
+            strIndex++;
+        }
+        
+        for (int y = 0 ; y < 10 ; y++){
+            for (int z = 0 ; z < 10 ; z++){
+                if (y==0){
+                    //System.out.println(strArray[z]);
+                }
+                
+                if((strArray[y].equalsIgnoreCase(strArray[z]) && (y != z))){
+                    //System.out.println(strArray[y] + "," + strArray[z]);
+                    randomizetillaggNumbers();
+                }
+            }
+        }
+        
+    }
+    
     
 }
